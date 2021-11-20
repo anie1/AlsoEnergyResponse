@@ -1,0 +1,204 @@
+package newpackage;
+	import java.util.concurrent.TimeUnit;
+	import org.junit.AfterClass;
+	import org.junit.Assert;
+	import org.junit.BeforeClass;
+	import org.junit.Test;
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.WebElement;
+	import org.openqa.selenium.chrome.ChromeDriver;
+	import org.openqa.selenium.support.ui.Select;
+
+	public class SeleniumFindElement{
+		private static ChromeDriver driver;
+		 
+
+				
+				//WebDriver driver = new ChromeDriver();
+		    	
+//				//These are example 1
+//		    	String baseUrl = "http://www.facebook.com";
+//		        String tagName = "";
+//		        
+//		        driver.get(baseUrl);
+//		        tagName = driver.findElement(By.id("email")).getTagName();
+//		        System.out.println(tagName);
+//		        
+//		        WebElement usernameElement = driver.findElement(By.id("email"));
+//		        usernameElement.sendKeys("tutorial@fake.com");
+//		        driver.findElement(By.id("loginbutton")).click();
+				
+				//These are example 2
+
+	@Test
+	public void Login_ValidUserCredential(){
+			 //System.out.println("Starting test " + new Object(){}.getClass().getEnclosingMethod().getName());
+			 String baseUrl = "http://demo.guru99.com/test/login.html";	
+			 driver.get(baseUrl);
+			 
+		        // Get the WebElement corresponding to the Email Address(TextField)		
+		        WebElement email = driver.findElement(By.id("email"));							
+
+		        // Get the WebElement corresponding to the Password Field		
+		        WebElement password = driver.findElement(By.name("passwd"));							
+
+		        email.sendKeys("abcd@gmail.com");					
+		        password.sendKeys("abcdefghlkjl");					
+		        System.out.println("Text Field Set");			
+
+		     driver.findElement(By.id("SubmitLogin")).submit();
+		     System.out.println("Login Done with Submit");	
+		     try{
+		    	 driver.getPageSource().contains("Successfully Logged in");		     
+		     }catch (Exception e){
+				}
+		     System.out.println("Ending test " + new Object(){}.getClass().getEnclosingMethod().getName());     
+	}
+		         	
+	/*@Test     
+		     public boolean isTextPresent(String text){
+		    	boolean b = true; 
+	    		text = "Successfully Logged in";   
+		    	 try{
+		    	        b = driver.getPageSource().contains(text);
+		    	        return b;
+		    	    }
+		    	    catch(Exception e){
+		    	        return false;
+		    	    }
+	}*/
+		     //Assert.assertNotNull(element);
+		     
+	@Test
+	public void DropDown1_findElement() {	
+			String baseURL = "http://demo.guru99.com/test/newtours/register.php";
+			driver.get(baseURL);
+						
+			Select drpCountry = new Select(driver.findElement(By.name("country")));
+			drpCountry.selectByVisibleText("ANTARCTICA");	
+		     System.out.println("Ending test " + new Object(){}.getClass().getEnclosingMethod().getName());     
+			}
+
+	@Test
+	public void DropDown2_findElement() {
+		//Selecting Items in a Multiple SELECT elements
+		driver.get("http://jsbin.com/osebed/2");
+		Select fruits = new Select(driver.findElement(By.id("fruits")));
+		fruits.selectByVisibleText("Banana");
+		fruits.selectByIndex(1);
+	    System.out.println("Ending test " + new Object(){}.getClass().getEnclosingMethod().getName());     
+	}
+
+	@Test
+	public void RadioButton_findElement() {
+		//Sample Radio Button
+	    driver.get("http://demo.guru99.com/test/radio.html");
+		WebElement radio1 = driver.findElement(By.id("vfb-7-1"));
+		radio1.click();
+		WebElement radio2 = driver.findElement(By.id("vfb-7-2"));
+		radio2.click();
+	    System.out.println("Ending test " + new Object(){}.getClass().getEnclosingMethod().getName());     
+	}
+
+	@Test
+	public void CheckButton_findElement() {	
+		//Sample Checkbox
+		driver.get("http://demo.guru99.com/test/radio.html");
+		WebElement option1 = driver.findElement(By.id("vfb-6-0"));
+		option1.click();
+		if(option1.isSelected()) {
+			System.out.println("Checkbox is Toggled On");
+		}
+		else {
+			System.out.println("Checkbox is Toggled Off");
+		}
+		
+	/*	option1.click();
+		if(!option1.isSelected()) {
+			System.out.println("Checkbox is now Toggle Off !!");
+		}*/
+	    System.out.println("Ending test " + new Object(){}.getClass().getEnclosingMethod().getName());     
+	}
+
+
+	}	 
+		 
+	/*@Test
+	public void findElement() {
+		
+
+				String baseURL = "http://demo.guru99.com/test/newtours/register.php";
+				driver1.get(baseURL);
+				*/
+				
+				
+		/*		Select drpCountry = new Select(driver1.findElement(By.name("country")));
+				drpCountry.selectByVisibleText("ANTARCTICA");
+				
+				//Selecting Items in a Multiple SELECT elements
+				driver1.get("http://jsbin.com/osebed/2");
+				Select fruits = new Select(driver1.findElement(By.id("fruits")));
+				fruits.selectByVisibleText("Banana");
+				fruits.selectByIndex(1);
+			
+				//Sample Radio Button
+		        driver1.get("http://demo.guru99.com/test/radio.html");
+				WebElement radio1 = driver1.findElement(By.id("vfb-7-1"));
+				radio1.click();
+				WebElement radio2 = driver1.findElement(By.id("vfb-7-2"));
+				radio2.click();*/
+				
+				//Sample Checkbox
+		/*		WebElement option1 = driver1.findElement(By.id("vfb-6-0"));
+				option1.click();
+				if(option1.isSelected()) {
+					System.out.println("Checkbox is Toggled On");
+				}
+				else {
+					System.out.println("Checkbox is Toggled Off");
+				}
+				
+				option1.click();
+				if(!option1.isSelected()) {
+					System.out.println("Checkbox is now Toggle Off !!");
+				}*/
+				
+				//Sample Login Page
+	/*			 String baseUrl = "http://demo.guru99.com/test/login.html";					
+			        driver1.get(baseUrl);					
+
+			        // Get the WebElement corresponding to the Email Address(TextField)		
+			        WebElement email = driver1.findElement(By.id("email"));							
+
+			        // Get the WebElement corresponding to the Password Field		
+			        WebElement password = driver1.findElement(By.name("passwd"));							
+
+			        email.sendKeys("abcd@gmail.com");					
+			        password.sendKeys("abcdefghlkjl");					
+			        System.out.println("Text Field Set");					
+			         
+			        // Deleting values in the text box		
+			        email.clear();			
+			        password.clear();			
+			        System.out.println("Text Field Cleared");					
+
+			        // Find the submit button		
+			        WebElement login = driver1.findElement(By.id("SubmitLogin"));							
+			                    		
+			        // Using click method to submit form		
+			        email.sendKeys("abcd@gmail.com");					
+			        password.sendKeys("abcdefghlkjl");					
+			        login.click();			
+			        System.out.println("Login Done with Click");					
+			        		
+			        //using submit method to submit the form. Submit used on password field		
+			        driver1.get(baseUrl);					
+			        driver1.findElement(By.id("email")).sendKeys("abcd@gmail.com");							
+			        driver1.findElement(By.name("passwd")).sendKeys("abcdefghlkjl");							
+			        driver1.findElement(By.id("SubmitLogin")).submit();					
+			        System.out.println("Login Done with Submit");	*/							
+	/*            driver.close();
+		        driver.quit();
+		        System.exit(0);*/
+		     //}
+		
